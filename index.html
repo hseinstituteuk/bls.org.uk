@@ -1,0 +1,542 @@
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Global BLS Training & Certification Institute</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link
+  href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto:wght@400;700&display=swap"
+  rel="stylesheet"
+/>
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+/>
+<style>
+  body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #ffffff;
+    color: #1e293b;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Roboto', sans-serif;
+  }
+  /* Heartbeat animation for logo */
+  @keyframes heartbeat {
+    0%, 100% {
+      transform: scale(1);
+      transform-origin: center;
+      filter: drop-shadow(0 0 0 #0ea5e9);
+    }
+    25% {
+      transform: scale(1.15);
+      filter: drop-shadow(0 0 6px #0ea5e9);
+    }
+    50% {
+      transform: scale(1);
+      filter: drop-shadow(0 0 0 #0ea5e9);
+    }
+  }
+  .heartbeat {
+    animation: heartbeat 1.5s ease-in-out infinite;
+    color: #0ea5e9;
+  }
+  /* Fade in up animation */
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .fade-in-up {
+    animation: fadeInUp 1s ease forwards;
+  }
+  /* Button hover scale */
+  .btn-hover:hover {
+    transform: scale(1.05);
+  }
+  /* ECG line animation */
+  .ecg-line path {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: ecgDraw 4s linear infinite;
+  }
+  @keyframes ecgDraw {
+    0% {
+      stroke-dashoffset: 1000;
+    }
+    100% {
+      stroke-dashoffset: 0;
+    }
+  }
+  /* Course card hover */
+  .course-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(14, 165, 233, 0.3);
+  }
+  /* Verification card border and badge */
+  .verification-card {
+    border: 3px solid #0ea5e9;
+    border-radius: 0.75rem;
+    background: #f0f9ff;
+    position: relative;
+  }
+  .verified-badge {
+    position: absolute;
+    top: -12px;
+    right: -12px;
+    background-color: #14b8a6;
+    color: white;
+    font-weight: 700;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    box-shadow: 0 0 8px #14b8a6aa;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.875rem;
+  }
+  /* Error message */
+  .error-message {
+    color: #dc2626;
+    font-weight: 600;
+  }
+  /* Input focus */
+  input:focus, textarea:focus {
+    outline: none;
+    border-color: #0ea5e9;
+    box-shadow: 0 0 5px #0ea5e9aa;
+  }
+  /* Smooth scroll for anchor links */
+  html {
+    scroll-behavior: smooth;
+  }
+  /* Responsive map placeholder */
+  .map-placeholder {
+    background-color: #e0f2fe;
+    border: 2px dashed #0ea5e9;
+    border-radius: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #0ea5e9;
+    font-weight: 600;
+    font-size: 1.125rem;
+    height: 250px;
+  }
+</style>
+</head>
+<body class="antialiased">
+
+<!-- Header & Navigation -->
+<header class="sticky top-0 bg-white shadow z-50">
+  <nav class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="#home" class="flex items-center space-x-2">
+      <svg
+        class="heartbeat w-10 h-10 text-teal-500"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+      >
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3 12h3l3 8 4-16 3 8h3"></path>
+      </svg>
+      <span class="text-2xl font-bold text-teal-600 select-none">Global BLS</span>
+    </a>
+    <ul class="hidden md:flex space-x-8 font-semibold text-slate-700">
+      <li><a href="#home" class="hover:text-teal-600 transition">Home</a></li>
+      <li><a href="#about" class="hover:text-teal-600 transition">About</a></li>
+      <li><a href="#courses" class="hover:text-teal-600 transition">Courses</a></li>
+      <li><a href="#verify" class="hover:text-teal-600 transition">Verify Certificate</a></li>
+      <li><a href="#contact" class="hover:text-teal-600 transition">Contact</a></li>
+    </ul>
+    <button id="mobile-menu-button" aria-label="Toggle menu" class="md:hidden text-teal-600 focus:outline-none">
+      <i class="fas fa-bars fa-lg"></i>
+    </button>
+  </nav>
+  <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-200">
+    <ul class="flex flex-col space-y-2 px-6 py-4 font-semibold text-slate-700">
+      <li><a href="#home" class="block py-2 hover:text-teal-600 transition">Home</a></li>
+      <li><a href="#about" class="block py-2 hover:text-teal-600 transition">About</a></li>
+      <li><a href="#courses" class="block py-2 hover:text-teal-600 transition">Courses</a></li>
+      <li><a href="#verify" class="block py-2 hover:text-teal-600 transition">Verify Certificate</a></li>
+      <li><a href="#contact" class="block py-2 hover:text-teal-600 transition">Contact</a></li>
+    </ul>
+  </div>
+</header>
+
+<!-- Hero Section -->
+<section id="home" class="relative overflow-hidden bg-white">
+  <div class="max-w-7xl mx-auto px-6 py-20 md:py-32 flex flex-col md:flex-row items-center justify-between">
+    <div class="max-w-xl text-center md:text-left fade-in-up" style="animation-delay: 0.3s;">
+      <h1 class="text-4xl md:text-5xl font-extrabold text-teal-700 leading-tight mb-4">
+        Global BLS Training &amp; Certification Institute
+      </h1>
+      <p class="text-lg md:text-xl text-slate-600 mb-8 font-semibold">
+        Accredited Basic Life Support (BLS) Training &amp; Certification
+      </p>
+      <a href="#verify" class="inline-block bg-teal-600 text-white font-semibold px-8 py-3 rounded-lg shadow-md hover:bg-teal-700 transition btn-hover">
+        Verify Certificate
+      </a>
+    </div>
+    <div class="mt-12 md:mt-0 w-full max-w-lg relative">
+      <svg
+        class="ecg-line w-full h-48 md:h-64"
+        viewBox="0 0 600 150"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+      >
+        <path
+          stroke="#0ea5e9"
+          stroke-width="4"
+          d="M0 75 L50 75 L70 40 L90 110 L110 75 L150 75 L170 30 L190 120 L210 75 L250 75 L270 50 L290 100 L310 75 L350 75 L370 40 L390 110 L410 75 L450 75 L470 30 L490 120 L510 75 L550 75 L570 50 L590 100 L600 75"
+          stroke-linejoin="round"
+          stroke-linecap="round"
+        />
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- About Us -->
+<section id="about" class="max-w-7xl mx-auto px-6 py-20 md:py-28">
+  <div class="text-center max-w-4xl mx-auto fade-in-up" style="animation-delay: 0.4s;">
+    <h2 class="text-3xl font-bold text-teal-700 mb-6">About Us</h2>
+    <p class="text-slate-700 text-lg mb-8 leading-relaxed">
+      Global BLS Training & Certification Institute is dedicated to providing professional, accredited Basic Life Support training worldwide. Our expert instructors ensure that every participant gains the skills and confidence needed to save lives in emergency situations.
+    </p>
+  </div>
+  <div class="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-10 max-w-5xl mx-auto fade-in-up" style="animation-delay: 0.6s;">
+    <div class="flex flex-col items-center text-center space-y-4 px-4">
+      <div class="text-teal-600 text-5xl">
+        <i class="fas fa-bullseye"></i>
+      </div>
+      <h3 class="text-xl font-semibold text-teal-700">Our Mission</h3>
+      <p class="text-slate-600">
+        Providing professional BLS training globally to empower individuals and communities.
+      </p>
+    </div>
+    <div class="flex flex-col items-center text-center space-y-4 px-4">
+      <div class="text-teal-600 text-5xl">
+        <i class="fas fa-certificate"></i>
+      </div>
+      <h3 class="text-xl font-semibold text-teal-700">Accreditation</h3>
+      <p class="text-slate-600">
+        Accredited by international healthcare organizations ensuring quality and recognition.
+      </p>
+    </div>
+    <div class="flex flex-col items-center text-center space-y-4 px-4">
+      <div class="text-teal-600 text-5xl">
+        <i class="fas fa-heartbeat"></i>
+      </div>
+      <h3 class="text-xl font-semibold text-teal-700">Commitment</h3>
+      <p class="text-slate-600">
+        Dedicated to saving lives through expert training and continuous support.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Courses -->
+<section id="courses" class="bg-white max-w-7xl mx-auto px-6 py-20 md:py-28">
+  <div class="text-center max-w-4xl mx-auto fade-in-up" style="animation-delay: 0.5s;">
+    <h2 class="text-3xl font-bold text-teal-700 mb-6">Our Courses</h2>
+    <p class="text-slate-700 text-lg mb-12 max-w-3xl mx-auto">
+      We specialize in the Basic Life Support (BLS) program designed to equip you with essential lifesaving skills.
+    </p>
+  </div>
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+    <div class="course-card bg-white border border-slate-200 rounded-xl p-6 shadow-md transition-transform duration-300 ease-in-out hover:shadow-lg hover:scale-105 fade-in-up" style="animation-delay: 0.6s;">
+      <div class="text-teal-600 text-5xl mb-4">
+        <i class="fas fa-procedures"></i>
+      </div>
+      <h3 class="text-xl font-semibold text-teal-700 mb-2">CPR Training</h3>
+      <p class="text-slate-600">
+        Learn effective cardiopulmonary resuscitation techniques to save lives during cardiac emergencies.
+      </p>
+    </div>
+    <div class="course-card bg-white border border-slate-200 rounded-xl p-6 shadow-md transition-transform duration-300 ease-in-out hover:shadow-lg hover:scale-105 fade-in-up" style="animation-delay: 0.7s;">
+      <div class="text-teal-600 text-5xl mb-4">
+        <i class="fas fa-bolt"></i>
+      </div>
+      <h3 class="text-xl font-semibold text-teal-700 mb-2">AED Usage</h3>
+      <p class="text-slate-600">
+        Master the use of Automated External Defibrillators (AED) for quick and safe emergency response.
+      </p>
+    </div>
+    <div class="course-card bg-white border border-slate-200 rounded-xl p-6 shadow-md transition-transform duration-300 ease-in-out hover:shadow-lg hover:scale-105 fade-in-up" style="animation-delay: 0.8s;">
+      <div class="text-teal-600 text-5xl mb-4">
+        <i class="fas fa-ambulance"></i>
+      </div>
+      <h3 class="text-xl font-semibold text-teal-700 mb-2">Emergency Response</h3>
+      <p class="text-slate-600">
+        Gain skills to assess and respond effectively to various emergency situations.
+      </p>
+    </div>
+    <div class="course-card bg-white border border-slate-200 rounded-xl p-6 shadow-md transition-transform duration-300 ease-in-out hover:shadow-lg hover:scale-105 fade-in-up" style="animation-delay: 0.9s;">
+      <div class="text-teal-600 text-5xl mb-4">
+        <i class="fas fa-first-aid"></i>
+      </div>
+      <h3 class="text-xl font-semibold text-teal-700 mb-2">First Aid Certification</h3>
+      <p class="text-slate-600">
+        Comprehensive first aid training to handle injuries and medical emergencies confidently.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Certificate Verification -->
+<section id="verify" class="bg-white max-w-7xl mx-auto px-6 py-20 md:py-28">
+  <div class="max-w-3xl mx-auto fade-in-up" style="animation-delay: 0.5s;">
+    <h2 class="text-3xl font-bold text-teal-700 mb-8 text-center">Certificate Verification</h2>
+    <form id="verify-form" class="flex flex-col sm:flex-row items-center gap-4 mb-8">
+      <input
+        id="certificate-input"
+        type="text"
+        maxlength="15"
+        placeholder="###"
+        class="w-full sm:flex-1 border border-slate-300 rounded-lg px-4 py-3 text-lg focus:ring-2 focus:ring-teal-400 transition"
+        autocomplete="off"
+        aria-label="Certificate Number"
+        required
+      />
+      <button
+        type="submit"
+        id="verify-button"
+        class="bg-teal-600 text-white font-semibold px-8 py-3 rounded-lg shadow-md hover:bg-teal-700 transition btn-hover flex items-center justify-center gap-2"
+      >
+        <i class="fas fa-search"></i> Verify
+      </button>
+    </form>
+    <div id="verification-result" class="min-h-[280px]"></div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact" class="bg-white max-w-7xl mx-auto px-6 py-20 md:py-28">
+  <div class="max-w-5xl mx-auto fade-in-up" style="animation-delay: 0.5s;">
+    <h2 class="text-3xl font-bold text-teal-700 mb-10 text-center">Contact Us</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+      <div class="space-y-8">
+        <div class="flex items-start space-x-4">
+          <div class="text-teal-600 text-3xl mt-1">
+            <i class="fas fa-map-marker-alt"></i>
+          </div>
+          <div>
+            <h3 class="font-semibold text-teal-700 text-lg mb-1">Address</h3>
+            <p class="text-slate-700">123 Healthcare Blvd, Peshawar, Pakistan</p>
+          </div>
+        </div>
+        <div class="flex items-start space-x-4">
+          <div class="text-teal-600 text-3xl mt-1">
+            <i class="fas fa-envelope"></i>
+          </div>
+          <div>
+            <h3 class="font-semibold text-teal-700 text-lg mb-1">Email</h3>
+            <p class="text-slate-700">info@globalbls.org</p>
+          </div>
+        </div>
+        <div class="flex items-start space-x-4">
+          <div class="text-teal-600 text-3xl mt-1">
+            <i class="fas fa-phone-alt"></i>
+          </div>
+          <div>
+            <h3 class="font-semibold text-teal-700 text-lg mb-1">Phone</h3>
+            <p class="text-slate-700">+92 300 1234567</p>
+          </div>
+        </div>
+        <div class="map-placeholder" aria-label="Map placeholder showing location of Global BLS Training & Certification Institute">
+          Map Placeholder
+        </div>
+      </div>
+      <form id="contact-form" class="space-y-6 bg-slate-50 p-8 rounded-xl shadow-md" novalidate>
+        <div>
+          <label for="name" class="block text-slate-700 font-semibold mb-2">Name</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            required
+            class="w-full border border-slate-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-teal-400 transition"
+            autocomplete="name"
+            aria-required="true"
+          />
+        </div>
+        <div>
+          <label for="email" class="block text-slate-700 font-semibold mb-2">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            class="w-full border border-slate-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-teal-400 transition"
+            autocomplete="email"
+            aria-required="true"
+          />
+        </div>
+        <div>
+          <label for="message" class="block text-slate-700 font-semibold mb-2">Message</label>
+          <textarea
+            id="message"
+            name="message"
+            rows="4"
+            required
+            class="w-full border border-slate-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-teal-400 transition resize-none"
+            aria-required="true"
+          ></textarea>
+        </div>
+        <button
+          type="submit"
+          class="bg-teal-600 text-white font-semibold px-8 py-3 rounded-lg shadow-md hover:bg-teal-700 transition btn-hover w-full"
+        >
+          Send Message
+        </button>
+        <p id="contact-feedback" class="text-center font-semibold mt-2"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-slate-100 py-6 mt-12">
+  <div class="max-w-7xl mx-auto px-6 text-center text-slate-600 text-sm select-none">
+    © 2025 Global BLS Training &amp; Certification Institute – All Rights Reserved
+  </div>
+</footer>
+
+<script>
+  // Mobile menu toggle
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  mobileMenuButton.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+  });
+
+  // Certificate verification logic
+  const verifyForm = document.getElementById('verify-form');
+  const certificateInput = document.getElementById('certificate-input');
+  const verificationResult = document.getElementById('verification-result');
+
+  // Hardcoded valid certificate data
+  const validCertificate = {
+    number: 'BLS-92LP-2025',
+    name: 'FAIZAN',
+    issueDate: '2025-09-06',
+    expiry: 'None (Lifetime Valid)',
+    course: 'Basic Life Support (BLS)',
+    status: '✅ VALID & VERIFIED',
+    instructor: 'Dr. John Smith',
+    location: 'Peshawar, Pakistan',
+  };
+
+  // Function to create QR code using Google Chart API
+  function createQRCode(data) {
+    const encoded = encodeURIComponent(data);
+    return `https://chart.googleapis.com/chart?cht=qr&chs=150x150&chl=${encoded}`;
+  }
+
+  verifyForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const inputVal = certificateInput.value.trim().toUpperCase();
+
+    verificationResult.innerHTML = '';
+    if (inputVal === validCertificate.number) {
+      // Show verification card
+      const card = document.createElement('div');
+      card.className = 'verification-card p-8 fade-in-up relative';
+      card.style.animationDelay = '0.3s';
+
+      const badge = document.createElement('div');
+      badge.className = 'verified-badge';
+      badge.innerHTML = '<i class="fas fa-check-circle"></i> Verified';
+      card.appendChild(badge);
+
+      const content = `
+        <h3 class="text-2xl font-bold text-teal-700 mb-6 text-center">Certificate Details</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-slate-700 font-semibold">
+          <div><span class="text-teal-600">Certificate Number:</span> ${validCertificate.number}</div>
+          <div><span class="text-teal-600">Name:</span> ${validCertificate.name}</div>
+          <div><span class="text-teal-600">Issue Date:</span> ${validCertificate.issueDate}</div>
+          <div><span class="text-teal-600">Expiry:</span> ${validCertificate.expiry}</div>
+          <div><span class="text-teal-600">Course:</span> ${validCertificate.course}</div>
+          <div><span class="text-teal-600">Status:</span> ${validCertificate.status}</div>
+          <div><span class="text-teal-600">Instructor:</span> ${validCertificate.instructor}</div>
+          <div><span class="text-teal-600">Location:</span> ${validCertificate.location}</div>
+        </div>
+        <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-6">
+          <button id="qr-button" class="bg-teal-600 text-white font-semibold px-6 py-3 rounded-lg shadow-md hover:bg-teal-700 transition btn-hover flex items-center gap-2">
+            <i class="fas fa-qrcode"></i> Add QR Code
+          </button>
+          <div id="qr-container" class="mt-4 sm:mt-0"></div>
+        </div>
+      `;
+      card.innerHTML += content;
+      verificationResult.appendChild(card);
+
+      const qrButton = document.getElementById('qr-button');
+      const qrContainer = document.getElementById('qr-container');
+      let qrAdded = false;
+
+      qrButton.addEventListener('click', () => {
+        if (!qrAdded) {
+          const qrImg = document.createElement('img');
+          qrImg.src = createQRCode(`Certificate Number: ${validCertificate.number}\nName: ${validCertificate.name}\nCourse: ${validCertificate.course}\nStatus: VALID & VERIFIED`);
+          qrImg.alt = 'QR code for certificate verification containing certificate number, name, course, and status';
+          qrImg.className = 'w-36 h-36 rounded-lg shadow-lg border border-teal-400';
+          qrContainer.appendChild(qrImg);
+          qrAdded = true;
+          qrButton.disabled = true;
+          qrButton.classList.add('opacity-50', 'cursor-not-allowed');
+        }
+      });
+    } else {
+      // Show error message
+      const errorMsg = document.createElement('p');
+      errorMsg.className = 'error-message text-center font-semibold fade-in-up';
+      errorMsg.style.animationDelay = '0.3s';
+      errorMsg.textContent = 'Certificate Not Found – Please Try Again';
+      verificationResult.appendChild(errorMsg);
+    }
+  });
+
+  // Contact form submission (mock)
+  const contactForm = document.getElementById('contact-form');
+  const contactFeedback = document.getElementById('contact-feedback');
+
+  contactForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    contactFeedback.textContent = '';
+    const name = contactForm.name.value.trim();
+    const email = contactForm.email.value.trim();
+    const message = contactForm.message.value.trim();
+
+    if (!name || !email || !message) {
+      contactFeedback.textContent = 'Please fill in all fields.';
+      contactFeedback.className = 'text-red-600 font-semibold mt-2';
+      return;
+    }
+
+    // Simple email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      contactFeedback.textContent = 'Please enter a valid email address.';
+      contactFeedback.className = 'text-red-600 font-semibold mt-2';
+      return;
+    }
+
+    // Simulate successful submission
+    contactFeedback.textContent = 'Thank you for contacting us! We will get back to you soon.';
+    contactFeedback.className = 'text-teal-600 font-semibold mt-2';
+
+    contactForm.reset();
+  });
+</script>
+</body>
+</html>
